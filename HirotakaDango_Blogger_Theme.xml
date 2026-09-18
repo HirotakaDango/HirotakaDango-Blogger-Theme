@@ -1,0 +1,1961 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='indie.xml' b:templateVersion='1.0.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <head>
+    <meta content='width=device-width, initial-scale=1, viewport-fit=cover' name='viewport'/>
+    <title><data:view.title.escaped/></title>
+    <b:include data='blog' name='all-head-content'/>
+
+    <!-- Immediate Theme Application to prevent flash of wrong theme -->
+    <script type='text/javascript'>
+      //<![CDATA[
+      (function() {
+        var saved = localStorage.getItem('md3_theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = saved ? saved : (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+      //]]>
+    </script>
+
+    <!-- Google Fonts: Roboto, Roboto Flex, and Monospace -->
+    <link href='https://fonts.googleapis.com' rel='preconnect'/>
+    <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
+    <link href='https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,500;8..144,600;8..144,700&amp;family=Roboto:ital,wght@0,400;0,500;1,400&amp;family=Roboto+Mono:wght@400;500;600&amp;display=swap' rel='stylesheet'/>
+    <link href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0' rel='stylesheet'/>
+
+    <b:skin version='1.0.0'><![CDATA[
+/*
+<!-- Original Blogger Theme Designer Variables (Preserved for 100% Compatibility) -->
+<Variable name="keycolor" description="Main Color" type="color" default="#005ac1" value="#005ac1"/>
+<Variable name="startSide" description="Start side" type="automatic" default="left" hideEditor="true"/>
+<Variable name="endSide" description="End side" type="automatic" default="right" hideEditor="true"/>
+
+<Group description="Theme Colors">
+  <Variable name="body.background.color" description="Surface Background" type="color" default="#fdfcff" value="#fdfcff"/>
+  <Variable name="posts.background.color" description="Card Surface" type="color" default="#ffffff" value="#ffffff"/>
+  <Variable name="body.text.color" description="Body Text Color" type="color" default="#1a1c1e" value="#1a1c1e"/>
+  <Variable name="body.link.color" description="Brand Primary Color" type="color" default="#005ac1" value="#005ac1"/>
+  <Variable name="body.link.hover.color" description="Link Hover Color" type="color" default="#004494" value="#004494"/>
+  <Variable name="body.link.visited.color" description="Link Visited Color" type="color" default="#005ac1" value="#005ac1"/>
+  <Variable name="posts.title.color" description="Title Color" type="color" default="#1a1c1e" value="#1a1c1e"/>
+  <Variable name="posts.text.color" description="Post Text Color" type="color" default="#44474f" value="#44474f"/>
+  <Variable name="posts.byline.color" description="Byline Color" type="color" default="#74777f" value="#74777f"/>
+</Group>
+*/
+
+/* ==========================================================================
+   MATERIAL DESIGN 3 TOKENS (LIGHT & DARK THEMING)
+   ========================================================================== */
+
+:root,
+html[data-theme='light'] {
+  --md-sys-color-primary: #005ac1;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #d8e2ff;
+  --md-sys-color-on-primary-container: #001a41;
+
+  --md-sys-color-secondary: #575e71;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #dbe2f9;
+  --md-sys-color-on-secondary-container: #141b2c;
+
+  --md-sys-color-surface: #fdfcff;
+  --md-sys-color-on-surface: #1a1c1e;
+  --md-sys-color-surface-variant: #e1e2ec;
+  --md-sys-color-on-surface-variant: #44474f;
+
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #f4f0f6;
+  --md-sys-color-surface-container: #eeeaef;
+  --md-sys-color-surface-container-high: #e8e4ea;
+  --md-sys-color-surface-container-highest: #e2dee4;
+
+  --md-sys-elevation-1: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --md-sys-elevation-2: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --md-sys-elevation-3: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  --md-sys-radius: 10px; /* UNIFORM 10px RADIUS */
+
+  --md-sys-font-brand: 'Roboto Flex', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --md-sys-font-plain: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --md-sys-font-mono: 'Roboto Mono', ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --md-layout-max-width: 760px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --md-sys-color-primary: #adc6ff;
+    --md-sys-color-on-primary: #002e69;
+    --md-sys-color-primary-container: #004494;
+    --md-sys-color-on-primary-container: #d8e2ff;
+
+    --md-sys-color-secondary: #bfc6dc;
+    --md-sys-color-on-secondary: #283041;
+    --md-sys-color-secondary-container: #3f4759;
+    --md-sys-color-on-secondary-container: #dbe2f9;
+
+    --md-sys-color-surface: #111318;
+    --md-sys-color-on-surface: #e2e2e9;
+    --md-sys-color-surface-variant: #44474f;
+    --md-sys-color-on-surface-variant: #c4c6d0;
+
+    --md-sys-color-surface-container-lowest: #0c0e13;
+    --md-sys-color-surface-container-low: #1a1c21;
+    --md-sys-color-surface-container: #202227;
+    --md-sys-color-surface-container-high: #282a2f;
+    --md-sys-color-surface-container-highest: #33353a;
+
+    color-scheme: dark;
+  }
+}
+
+html[data-theme='dark'] {
+  --md-sys-color-primary: #adc6ff;
+  --md-sys-color-on-primary: #002e69;
+  --md-sys-color-primary-container: #004494;
+  --md-sys-color-on-primary-container: #d8e2ff;
+
+  --md-sys-color-secondary: #bfc6dc;
+  --md-sys-color-on-secondary: #283041;
+  --md-sys-color-secondary-container: #3f4759;
+  --md-sys-color-on-secondary-container: #dbe2f9;
+
+  --md-sys-color-surface: #111318;
+  --md-sys-color-on-surface: #e2e2e9;
+  --md-sys-color-surface-variant: #44474f;
+  --md-sys-color-on-surface-variant: #c4c6d0;
+
+  --md-sys-color-surface-container-lowest: #0c0e13;
+  --md-sys-color-surface-container-low: #1a1c21;
+  --md-sys-color-surface-container: #202227;
+  --md-sys-color-surface-container-high: #282a2f;
+  --md-sys-color-surface-container-highest: #33353a;
+
+  color-scheme: dark;
+}
+
+/* ==========================================================================
+   RESET & ZERO-LINE ARCHITECTURE
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 !important; /* ZERO LINES */
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-font-plain);
+  font-size: 16px;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Natural Overflow Prevention */
+.page_body, .centered, .main, #main, article, .post, .entry-content {
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+  max-width: 100% !important;
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-size: 22px;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+  font-style: normal;
+  user-select: none;
+}
+
+a {
+  color: var(--md-sys-color-primary);
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   SUPPRESSION OF UNWANTED MODULES
+   ========================================================================== */
+
+.FeaturedPost,
+#page_body .FeaturedPost,
+.widget.FeaturedPost,
+.home-link,
+.blog-pager-home-link,
+#blog-pager-home-link,
+a.home-link,
+.blog-pager .home-link,
+.blog-pager a[href*="blogspot.com"]:not(.blog-pager-older-link):not(.blog-pager-newer-link),
+.post > .jump-link,
+.post-share-buttons,
+.post-share-buttons-top,
+.post-share-buttons-bottom,
+.share-buttons,
+.sharing,
+.sharing-button,
+.sharing-platform-button,
+.widget.Sharing,
+.byline.post-share-buttons,
+.sidebar-container,
+#sidebar_top,
+#sidebar_bottom,
+aside,
+.vertical-ad-container,
+.hamburger-menu,
+.PageList,
+.BlogArchive,
+.Label,
+.LinkList,
+.ReportAbuse,
+.Image,
+.HTML,
+.bg-photo,
+.bg-photo-overlay,
+.bg-photo-container,
+.centered-top-placeholder,
+.navigation,
+.search,
+#search_top,
+.BlogSearch,
+.skip-navigation,
+.PopularPosts,
+.dim-overlay,
+.feed-links,
+.blog-feeds,
+.post-feeds,
+.subscribe-section-container,
+.subscribe-popup,
+#sharing-dim-overlay {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: none !important;
+}
+
+svg {
+  max-width: 24px;
+  max-height: 24px;
+}
+
+/* ==========================================================================
+   SINGLE COLUMN & COMPACT MOBILE SPACING
+   ========================================================================== */
+
+.page_body {
+  position: static !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  max-width: 100% !important;
+}
+
+.page_body .centered {
+  display: block !important;
+  max-width: var(--md-layout-max-width) !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 20px 16px 64px 16px !important;
+}
+
+@media (max-width: 640px) {
+  .page_body .centered {
+    padding: 8px 10px 40px 10px !important;
+  }
+}
+
+.centered-bottom, .main, #main {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* ==========================================================================
+   TOP APP BAR
+   ========================================================================== */
+
+.centered-top-container {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
+  background-color: var(--md-sys-color-surface) !important;
+  padding: 12px 0 !important;
+  margin-bottom: 16px !important;
+  width: 100% !important;
+}
+
+.centered-top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+.blog-name {
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+.Header h1 {
+  font-family: var(--md-sys-font-brand) !important;
+  font-size: 1.35rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.25px !important;
+  color: var(--md-sys-color-on-surface) !important;
+  margin: 0 !important;
+}
+
+.Header h1 a {
+  color: var(--md-sys-color-on-surface) !important;
+}
+
+.Header p {
+  font-size: 0.8125rem !important;
+  color: var(--md-sys-color-on-surface-variant) !important;
+  margin: 2px 0 0 0 !important;
+}
+
+.top-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.md3-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--md-sys-radius); /* 10px */
+  background-color: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.md3-icon-btn:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+/* ==========================================================================
+   MD3 SORT BY BAR
+   ========================================================================== */
+
+.md3-sort-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0 0 16px 0;
+  padding: 6px 12px;
+  background-color: var(--md-sys-color-surface-container-low);
+  border-radius: var(--md-sys-radius); /* 10px */
+}
+
+.md3-sort-title {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.md3-sort-chips {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.md3-sort-chip {
+  background-color: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: var(--md-sys-radius); /* 10px */
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.md3-sort-chip:hover {
+  background-color: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface);
+}
+
+.md3-sort-chip.active {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   ORDINARY POSTS STREAM
+   ========================================================================== */
+
+body:not(.item-view) .Blog .blog-posts .post-outer-container {
+  display: flex !important;
+  flex-direction: column !important;
+  background-color: var(--md-sys-color-surface-container-low) !important;
+  border-radius: var(--md-sys-radius) !important; /* 10px */
+  padding: 18px !important;
+  margin-bottom: 16px !important;
+  box-shadow: var(--md-sys-elevation-1) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease !important;
+}
+
+body:not(.item-view) .Blog .blog-posts .post-outer-container:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: var(--md-sys-elevation-2) !important;
+}
+
+.Blog .post {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.Blog .post-title,
+.Blog .post-title a {
+  order: 1 !important;
+  font-family: var(--md-sys-font-brand) !important;
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  color: var(--md-sys-color-on-surface) !important;
+  margin: 0 0 6px 0 !important;
+  float: none !important;
+}
+
+.Blog .post-header {
+  order: 2 !important;
+  font-size: 0.8125rem !important;
+  color: var(--md-sys-color-on-surface-variant) !important;
+  margin-bottom: 8px !important;
+}
+
+/* Share Bar Placed Directly Under Byline */
+.post-share-header-bar {
+  order: 3 !important;
+  margin: 0 0 14px 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Snippet and Thumbnail Layout */
+body:not(.item-view) .Blog .post-body {
+  order: 4 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+  margin: 0 0 16px 0 !important;
+  color: var(--md-sys-color-on-surface-variant) !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.6 !important;
+}
+
+body:not(.item-view) .Blog .post-body .snippet-thumbnail {
+  order: 2 !important;
+  border-radius: var(--md-sys-radius) !important; /* 10px */
+  overflow: hidden !important;
+  width: 96px !important;
+  height: 96px !important;
+  min-width: 96px !important;
+  flex-shrink: 0 !important;
+  background-color: var(--md-sys-color-surface-container) !important;
+  margin: 0 !important;
+  float: none !important;
+}
+
+body:not(.item-view) .Blog .post-body .snippet-thumbnail img {
+  border-radius: var(--md-sys-radius) !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+body:not(.item-view) .Blog .post-body .post-snippet,
+body:not(.item-view) .Blog .post-body p {
+  order: 1 !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+}
+
+body:not(.item-view) .Blog .post-bottom {
+  order: 5 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  margin-top: auto !important;
+}
+
+/* Clean MD3 Buttons */
+.md3-share-trigger {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background-color: var(--md-sys-color-secondary-container) !important;
+  color: var(--md-sys-color-on-secondary-container) !important;
+  border-radius: var(--md-sys-radius) !important; /* 10px */
+  padding: 6px 14px !important;
+  font-weight: 500 !important;
+  font-size: 0.8125rem !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.Blog .jump-link {
+  float: none !important;
+  margin: 0 !important;
+}
+
+.Blog .jump-link a {
+  display: inline-flex !important;
+  align-items: center !important;
+  background-color: var(--md-sys-color-primary) !important;
+  color: var(--md-sys-color-on-primary) !important;
+  border-radius: var(--md-sys-radius) !important; /* 10px */
+  padding: 8px 18px !important;
+  font-weight: 500 !important;
+  font-size: 0.8125rem !important;
+  letter-spacing: 0.1px !important;
+  text-decoration: none !important;
+  box-shadow: var(--md-sys-elevation-1) !important;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   SINGLE ARTICLE VIEW (MATERIAL DESIGN 3)
+   ========================================================================== */
+
+body.item-view .Blog .blog-posts .post-outer-container {
+  display: block !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 0 24px 0 !important;
+}
+
+body.item-view .Blog .post {
+  display: block !important;
+  width: 100% !important;
+}
+
+body.item-view .post-title,
+body.item-view .post-title a {
+  font-family: var(--md-sys-font-brand) !important;
+  font-size: 2rem !important;
+  line-height: 1.25 !important;
+  font-weight: 700 !important;
+  margin: 0 0 10px 0 !important;
+  color: var(--md-sys-color-on-surface) !important;
+  display: block !important;
+}
+
+body.item-view .post-header {
+  font-size: 0.875rem !important;
+  color: var(--md-sys-color-on-surface-variant) !important;
+  margin-bottom: 12px !important;
+  display: block !important;
+}
+
+/* Article Body Typography */
+body.item-view .post-body,
+body.item-view .Blog .post-body {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  font-size: 1.0625rem !important;
+  line-height: 1.8 !important;
+  color: var(--md-sys-color-on-surface) !important;
+  margin: 0 0 24px 0 !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+}
+
+body.item-view .post-body p {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-bottom: 1.25rem !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+}
+
+body.item-view .post-body h1 { font-size: 1.75rem; font-weight: 600; margin: 2rem 0 1rem; }
+body.item-view .post-body h2 { font-size: 1.5rem; font-weight: 600; margin: 1.75rem 0 0.875rem; }
+body.item-view .post-body h3 { font-size: 1.25rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
+body.item-view .post-body h4 { font-size: 1.1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+
+body.item-view .post-body blockquote {
+  margin: 1.5rem 0 !important;
+  padding: 0.8rem 1.25rem !important;
+  border-left: 4px solid var(--md-sys-color-primary) !important;
+  background-color: var(--md-sys-color-surface-container-low) !important;
+  border-radius: var(--md-sys-radius) !important;
+  color: var(--md-sys-color-on-surface-variant) !important;
+  font-style: normal;
+}
+
+body.item-view .post-body code {
+  font-family: var(--md-sys-font-mono) !important;
+  font-size: 85% !important;
+  padding: 0.2em 0.4em !important;
+  border-radius: 6px !important;
+  background-color: var(--md-sys-color-surface-container) !important;
+  color: var(--md-sys-color-on-surface) !important;
+}
+
+body.item-view .post-body pre {
+  margin: 1.5rem 0 !important;
+  padding: 1rem 1.25rem !important;
+  background-color: var(--md-sys-color-surface-container-low) !important;
+  border-radius: var(--md-sys-radius) !important;
+  overflow-x: auto !important;
+  font-family: var(--md-sys-font-mono) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+}
+
+body.item-view .post-body pre code {
+  padding: 0 !important;
+  background-color: transparent !important;
+  font-size: inherit !important;
+}
+
+body.item-view .post-body table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border-radius: var(--md-sys-radius);
+  overflow: hidden;
+  margin: 1.5rem 0;
+  font-size: 0.9375rem;
+}
+
+body.item-view .post-body th,
+body.item-view .post-body td {
+  padding: 8px 14px;
+  text-align: left;
+}
+
+body.item-view .post-body th {
+  font-weight: 600;
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+body.item-view .post-body tr:nth-child(even) {
+  background-color: var(--md-sys-color-surface-container-low);
+}
+
+body.item-view .post-body ul,
+body.item-view .post-body ol {
+  padding-left: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+body.item-view .post-body li {
+  margin-bottom: 0.35rem;
+}
+
+body.item-view .post-body img {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: var(--md-sys-radius);
+  margin: 1.5rem auto !important;
+  display: block !important;
+}
+
+body.item-view .post-body .separator {
+  clear: both !important;
+  text-align: center !important;
+  margin: 1.5rem 0 !important;
+}
+
+body.item-view .post-body .separator a {
+  float: none !important;
+  margin: 0 auto !important;
+  display: inline-block !important;
+}
+
+/* ==========================================================================
+   AUTHOR PROFILE CARD
+   ========================================================================== */
+
+.md3-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--md-sys-color-surface-container-low);
+  border-radius: var(--md-sys-radius); /* 10px */
+  padding: 18px;
+  margin: 28px 0;
+}
+
+.md3-profile-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--md-sys-radius); /* 10px */
+  object-fit: cover;
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+.md3-profile-info {
+  flex: 1;
+}
+
+.md3-profile-role {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--md-sys-color-primary);
+}
+
+.md3-profile-name {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+  margin: 2px 0;
+}
+
+.md3-profile-bio {
+  font-size: 0.8125rem;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   COLLAPSIBLE COMMENTS
+   ========================================================================== */
+
+.comments-collapse-container {
+  margin-top: 36px;
+  border-radius: var(--md-sys-radius);
+  background-color: var(--md-sys-color-surface-container-low);
+  overflow: hidden;
+}
+
+.comments-collapse-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 20px;
+  background-color: transparent;
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-font-brand);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.comments-collapse-btn:hover {
+  background-color: var(--md-sys-color-surface-container);
+}
+
+.comments-collapse-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.comments-collapse-icon {
+  transition: transform 0.2s ease;
+}
+
+.comments-collapse-container.expanded .comments-collapse-icon {
+  transform: rotate(180deg);
+}
+
+.comments-collapse-body {
+  display: none;
+  padding: 0 20px 20px 20px;
+}
+
+.comments-collapse-container.expanded .comments-collapse-body {
+  display: block;
+}
+
+#comments {
+  background: transparent !important;
+  padding: 0 !important;
+  margin-top: 10px !important;
+}
+
+#comments h3.title {
+  display: none !important;
+}
+
+#comments .comment {
+  background-color: var(--md-sys-color-surface-container) !important;
+  border-radius: var(--md-sys-radius); /* 10px */
+  padding: 14px !important;
+  margin-bottom: 12px !important;
+}
+
+#comments .avatar-image-container {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: var(--md-sys-radius) !important;
+  overflow: hidden !important;
+}
+
+#comments .comment-block {
+  margin-left: 46px !important;
+}
+
+#comments .comment-header .user {
+  font-weight: 600 !important;
+  color: var(--md-sys-color-on-surface) !important;
+}
+
+#comments .comment-header .datetime a {
+  font-size: 0.75rem !important;
+  color: var(--md-sys-color-on-surface-variant) !important;
+}
+
+#comments .comment-body {
+  font-size: 0.875rem !important;
+  margin-top: 6px !important;
+}
+
+.comment-form {
+  border-radius: var(--md-sys-radius);
+  overflow: hidden;
+  margin-top: 16px;
+  background-color: var(--md-sys-color-surface);
+}
+
+#comment-editor {
+  width: 100% !important;
+  min-height: 220px !important;
+  border: none !important;
+}
+
+html[data-theme='dark'] #comment-editor,
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) #comment-editor {
+    filter: invert(0.88) hue-rotate(180deg) contrast(1.05);
+    background: transparent !important;
+  }
+}
+
+/* ==========================================================================
+   INFINITE LOAD MORE (PER LOAD 15 POSTS)
+   ========================================================================== */
+
+.md3-infinite-loader-container {
+  margin: 32px 0 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.md3-load-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface);
+  border-radius: var(--md-sys-radius); /* 10px */
+  padding: 10px 24px;
+  font-family: var(--md-sys-font-brand);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.md3-load-more-btn:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+  transform: translateY(-1px);
+}
+
+.md3-spinner {
+  display: none;
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--md-sys-color-surface-container-high);
+  border-top-color: var(--md-sys-color-primary);
+  border-radius: 50%;
+  animation: md3Spin 0.7s linear infinite;
+}
+
+@keyframes md3Spin {
+  to { transform: rotate(360deg); }
+}
+
+.md3-no-more-notice {
+  display: none;
+  font-size: 0.8125rem;
+  color: var(--md-sys-color-on-surface-variant);
+  padding: 10px;
+}
+
+/* ==========================================================================
+   PURE ICONS SHARE MODAL (NO LABELS & NO BACKGROUND BUTTONS)
+   ========================================================================== */
+
+.md3-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.md3-modal-backdrop.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.md3-modal-card {
+  width: 100%;
+  max-width: 440px;
+  background-color: var(--md-sys-color-surface);
+  border-radius: var(--md-sys-radius); /* 10px */
+  padding: 22px;
+  box-shadow: var(--md-sys-elevation-3);
+  transform: scale(0.96);
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.md3-modal-backdrop.active .md3-modal-card {
+  transform: scale(1);
+}
+
+.md3-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.md3-modal-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+}
+
+/* PURE ICONS GRID (STRICTLY EQUAL SPACING, ZERO BACKGROUNDS) */
+.md3-share-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: 8px;
+  margin-bottom: 24px;
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+}
+
+.md3-share-btn-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--md-sys-radius); /* 10px */
+  background: transparent !important;
+  background-color: transparent !important;
+  color: var(--md-sys-color-on-surface);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.md3-share-btn-item:hover {
+  transform: scale(1.2);
+  opacity: 0.85;
+  background: transparent !important;
+}
+
+.md3-share-btn-item svg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+/* Beautiful Copy Link Bar */
+.md3-copy-container {
+  display: flex;
+  align-items: center;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-radius); /* 10px */
+  padding: 4px 4px 4px 12px;
+  margin-bottom: 12px;
+}
+
+.md3-copy-input {
+  flex: 1;
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  outline: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.md3-copy-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  border-radius: var(--md-sys-radius); /* 10px */
+  padding: 8px 16px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.md3-copy-submit:hover {
+  opacity: 0.92;
+}
+
+/* Device Share Tonal Button */
+.md3-device-share-btn {
+  display: none; /* Managed by JS */
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 42px;
+  border-radius: var(--md-sys-radius); /* 10px */
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-font-brand);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.md3-device-share-btn:hover {
+  background-color: var(--md-sys-color-surface-container-highest);
+}
+
+.md3-device-share-btn .material-symbols-outlined {
+  font-size: 18px;
+}
+
+/* ==========================================================================
+   LIVE SEARCH MODAL
+   ========================================================================== */
+
+.md3-search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-radius); /* 10px */
+  padding: 4px 12px;
+}
+
+.md3-search-box input {
+  width: 100%;
+  height: 44px;
+  background: transparent;
+  color: var(--md-sys-color-on-surface);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  outline: none;
+}
+
+.md3-live-results {
+  display: none;
+  flex-direction: column;
+  margin-top: 10px;
+  max-height: 380px;
+  overflow-y: auto;
+  border-radius: var(--md-sys-radius);
+  background-color: var(--md-sys-color-surface-container-low);
+}
+
+.md3-live-results.has-results {
+  display: flex;
+}
+
+.md3-live-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--md-sys-radius);
+  color: var(--md-sys-color-on-surface);
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.md3-live-item:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+.md3-live-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--md-sys-radius);
+  object-fit: cover;
+  flex-shrink: 0;
+  background-color: var(--md-sys-color-surface-container);
+}
+
+.md3-live-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.md3-live-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.md3-live-meta {
+  font-size: 0.75rem;
+  color: var(--md-sys-color-on-surface-variant);
+  margin-top: 2px;
+}
+
+.md3-live-status {
+  padding: 14px;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* ==========================================================================
+   FOOTER & GITHUB BADGE
+   ========================================================================== */
+
+.footer {
+  margin-top: 36px !important;
+  padding: 24px 0 !important;
+  text-align: center !important;
+  font-size: 0.8125rem !important;
+  color: var(--md-sys-color-on-surface-variant) !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.md3-github-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--md-sys-radius); /* 10px */
+  background-color: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.md3-github-badge:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+  transform: translateY(-1px);
+}
+
+.Attribution a {
+  color: var(--md-sys-color-primary) !important;
+}
+]]></b:skin>
+
+    <b:template-skin>
+      <![CDATA[
+      body#layout .page_body .centered { max-width: 760px; }
+      ]]>
+    </b:template-skin>
+
+    <!-- BLOGGER DEFAULT MARKUPS -->
+    <b:defaultmarkups>
+      <b:defaultmarkup type='Common'>
+        <b:includable id='widgetNotAvailableInPreview'>
+          <b:include name='super.widgetNotAvailableInPreview'/>
+        </b:includable>
+      </b:defaultmarkup>
+
+      <b:defaultmarkup type='Blog'>
+        <b:includable id='headerByline'>
+          <b:include name='super.headerByline'/>
+          <!-- Share button placed directly under Posted by author & date -->
+          <div class='post-share-header-bar'>
+            <button class='md3-share-trigger' expr:data-title='data:post.title' expr:data-url='data:post.url' type='button'>
+              <span class='material-symbols-outlined' style='font-size: 16px;'>share</span>
+              <span>Share</span>
+            </button>
+          </div>
+        </b:includable>
+        <b:includable id='postShareButtons' var='post'>
+          <b:comment>Superseded by MD3 Modal</b:comment>
+        </b:includable>
+        <b:includable id='postJumpLink'>
+          <b:comment>Suppressed to prevent duplicate jump link</b:comment>
+        </b:includable>
+        <b:includable id='homePageLink'>
+          <b:comment>Home link removed</b:comment>
+        </b:includable>
+        <b:includable id='feedLinks'>
+          <b:comment>Feed links suppressed</b:comment>
+        </b:includable>
+        <b:includable id='commentsLink'>
+          <a class='comment-link' expr:href='data:post.commentsUrl' expr:onclick='data:post.commentsUrlOnclick'>
+            <span class='num_comments'>
+              <b:if cond='data:post.numberOfComments &gt; 0'>
+                <data:post.numberOfComments/> comments
+              <b:else/>
+                <data:messages.postAComment/>
+              </b:if>
+            </span>
+          </a>
+        </b:includable>
+        <b:includable id='snippetedPostByline'>
+          <b:include name='headerByline'/>
+        </b:includable>
+        <b:includable id='postFooter' var='post'>
+          <div class='post-bottom'>
+            <b:if cond='!data:view.isSingleItem'>
+              <div class='jump-link'>
+                <a expr:href='data:post.hasJumpLink ? data:post.url fragment &quot;more&quot; : data:post.url' expr:title='data:post.title'>
+                  <data:blog.jumpLinkMessage/>
+                </a>
+              </div>
+            </b:if>
+          </div>
+        </b:includable>
+        <b:includable id='postBodySnippet' var='post'>
+          <div class='container post-body entry-content' expr:id='&quot;post-snippet-&quot; + data:post.id'>
+            <b:if cond='data:post.featuredImage'>
+              <div class='snippet-thumbnail'>
+                <img expr:alt='data:post.title' expr:src='data:post.featuredImage'/>
+              </div>
+            </b:if>
+            <!-- Strict 300 character snippet limit -->
+            <p class='post-snippet'>
+              <b:eval expr='snippet(data:post.body, {length: 300, links: false, linebreaks: false, ellipsis: true})'/>
+            </p>
+          </div>
+        </b:includable>
+        <b:includable id='nextPageLink'>
+          <!-- Managed by Infinite Load More Script -->
+        </b:includable>
+      </b:defaultmarkup>
+
+      <b:defaultmarkup type='Header'>
+        <b:includable id='title'>
+          <div>
+            <b:include name='super.title'/>
+          </div>
+        </b:includable>
+      </b:defaultmarkup>
+    </b:defaultmarkups>
+
+    <b:include data='blog' name='google-analytics'/>
+  </head>
+
+  <body>
+    <!-- ESSENTIAL BODY VIEW CLASSES -->
+    <b:class cond='data:view.isSingleItem' name='item-view'/>
+    <b:class cond='data:view.isMultipleItems' name='feed-view'/>
+    <b:class cond='data:view.isArchive' name='archive-view'/>
+    <b:class cond='data:view.isSearch' name='search-view'/>
+
+    <div class='page'>
+      <div class='page_body'>
+        <div class='centered'>
+
+          <!-- Top Minimal App Bar -->
+          <header class='centered-top-container' role='banner'>
+            <div class='centered-top'>
+              <div class='blog-name container'>
+                <b:section class='container' id='header' name='Header' showaddelement='false'>
+                  <b:widget id='Header1' locked='true' title='Site Header' type='Header' visible='true'>
+                    <b:widget-settings>
+                      <b:widget-setting name='displayUrl'/>
+                      <b:widget-setting name='useImage'>false</b:widget-setting>
+                    </b:widget-settings>
+                    <b:includable id='main' var='this'>
+                      <div class='header-widget'>
+                        <b:include name='title'/>
+                        <b:include name='description'/>
+                      </div>
+                    </b:includable>
+                    <b:includable id='description'>
+                      <p><data:this.description/></p>
+                    </b:includable>
+                    <b:includable id='title'>
+                      <div>
+                        <h1><a expr:href='data:blog.homepageUrl'><data:this.title/></a></h1>
+                      </div>
+                    </b:includable>
+                  </b:widget>
+                </b:section>
+              </div>
+
+              <!-- Top Bar Actions: Search Button & Theme Toggle -->
+              <div class='top-bar-actions'>
+                <button aria-label='Search' class='md3-icon-btn' id='searchOpenBtn' type='button'>
+                  <span class='material-symbols-outlined'>search</span>
+                </button>
+                <button aria-label='Toggle Theme' class='md3-icon-btn' id='themeToggleBtn' type='button'>
+                  <span class='material-symbols-outlined' id='themeIcon'>dark_mode</span>
+                </button>
+              </div>
+            </div>
+          </header>
+
+          <!-- Main Stream: ORDINARY POSTS ONLY -->
+          <main class='centered-bottom' id='main' role='main' tabindex='-1'>
+            <b:section class='main' id='page_body' name='Page Body' showaddelement='false'>
+              
+              <!-- TOP POST COMPLETELY SUPPRESSED -->
+              <b:widget cond='false' id='FeaturedPost1' locked='false' title='Featured Post' type='FeaturedPost' visible='false'>
+                <b:includable id='main'/>
+              </b:widget>
+
+              <!-- ALL POSTS STREAM: Blog1 -->
+              <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' visible='true'>
+                <b:widget-settings>
+                  <b:widget-setting name='showDateHeader'>false</b:widget-setting>
+                  <b:widget-setting name='showAuthor'>true</b:widget-setting>
+                  <b:widget-setting name='showLabels'>true</b:widget-setting>
+                  <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+                  <b:widget-setting name='showCommentLink'>true</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                  <!-- Sort Bar (Active on feed views) -->
+                  <b:if cond='data:view.isMultipleItems'>
+                    <div class='md3-sort-bar'>
+                      <div class='md3-sort-title'>
+                        <span class='material-symbols-outlined' style='font-size:16px;'>sort</span>
+                        <span>Sort:</span>
+                      </div>
+                      <div class='md3-sort-chips'>
+                        <button class='md3-sort-chip active' data-sort='newest' type='button'>Newest</button>
+                        <button class='md3-sort-chip' data-sort='oldest' type='button'>Oldest</button>
+                        <button class='md3-sort-chip' data-sort='alpha' type='button'>A–Z</button>
+                      </div>
+                    </div>
+                  </b:if>
+
+                  <!-- Render posts stream -->
+                  <b:include name='super.main'/>
+
+                  <!-- Infinite Load More Container (15 Posts Per Batch) -->
+                  <b:if cond='data:view.isMultipleItems'>
+                    <div class='md3-infinite-loader-container' id='infiniteLoaderBox'>
+                      <button class='md3-load-more-btn' id='loadMorePostsBtn' type='button'>
+                        <span class='material-symbols-outlined'>expand_circle_down</span>
+                        <span>Load 15 More Posts</span>
+                      </button>
+                      <div class='md3-spinner' id='loadMoreSpinner'/>
+                      <div class='md3-no-more-notice' id='loadMoreEndNotice'>All posts loaded</div>
+                    </div>
+                  </b:if>
+                </b:includable>
+                
+                <!-- Profile Box in Item View -->
+                <b:includable id='postFooterAuthorProfile' var='post'>
+                  <div class='md3-profile-card'>
+                    <b:if cond='data:post.author.authorPhoto.url'>
+                      <img class='md3-profile-avatar' expr:alt='data:post.author.name' expr:src='data:post.author.authorPhoto.url'/>
+                    <b:else/>
+                      <div class='md3-profile-avatar' style='display:flex;align-items:center;justify-content:center;'>
+                        <span class='material-symbols-outlined'>person</span>
+                      </div>
+                    </b:if>
+                    <div class='md3-profile-info'>
+                      <div class='md3-profile-role'>Author</div>
+                      <h4 class='md3-profile-name'><data:post.author.name/></h4>
+                      <p class='md3-profile-bio'>
+                        <b:if cond='data:post.author.aboutMe'>
+                          <data:post.author.aboutMe/>
+                        <b:else/>
+                          Writer &amp; creator sharing ideas on software and technology.
+                        </b:if>
+                      </p>
+                    </div>
+                  </div>
+                </b:includable>
+              </b:widget>
+
+              <!-- Preserved widgets -->
+              <b:widget id='PopularPosts1' locked='false' title='Popular Posts' type='PopularPosts' visible='false'>
+                <b:includable id='main'/><b:includable id='commentsLink'/><b:includable id='postFooter'/><b:includable id='postFooterJumpLink'/><b:includable id='postJumpLink'/><b:includable id='postLabels'/><b:includable id='postShareButtons'/><b:includable id='snippetedPostByline'/><b:includable id='snippetedPostContent'/>
+              </b:widget>
+            </b:section>
+          </main>
+
+          <!-- Minimal Footer with GitHub Profile Link -->
+          <footer class='footer' role='contentinfo'>
+            <a class='md3-github-badge' href='https://github.com/HirotakaDango' rel='noopener noreferrer' target='_blank'>
+              <svg fill='currentColor' height='18' viewBox='0 0 24 24' width='18'>
+                <path d='M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z'/>
+              </svg>
+              <span>GitHub @HirotakaDango</span>
+            </a>
+
+            <b:section id='footer' maxwidgets='1' name='Footer' showaddelement='false'>
+              <b:widget id='Attribution1' locked='true' title='Attribution' type='Attribution' visible='true'>
+                <b:includable id='main' var='this'>
+                  <div class='widget-content'>
+                    <div class='copyright'><data:copyright/> Powered by <a href='https://www.blogger.com' rel='nofollow'>Blogger</a></div>
+                  </div>
+                </b:includable>
+              </b:widget>
+            </b:section>
+          </footer>
+        </div>
+      </div>
+
+      <!-- Preserved Layout Sections -->
+      <b:section class='vertical-ad-container' id='ads' name='Ads' showaddelement='false'>
+        <b:widget id='AdSense1' locked='false' title='' type='AdSense' visible='false'><b:includable id='main'/></b:widget>
+        <b:widget id='AdSense2' locked='false' title='' type='AdSense' visible='false'><b:includable id='main'/></b:widget>
+      </b:section>
+
+      <aside class='sidebar-container container sidebar-invisible' role='complementary'>
+        <b:section class='sidebar_top' id='sidebar_top' name='Sidebar (Top)'>
+          <b:widget id='Profile1' locked='false' title='About Me' type='Profile' visible='false'><b:includable id='main'/></b:widget>
+        </b:section>
+        <b:section class='sidebar_bottom' id='sidebar_bottom' name='Sidebar (Bottom)'>
+          <b:widget id='PageList3' locked='false' title='Pages' type='PageList' visible='false'><b:includable id='main'/></b:widget>
+          <b:widget id='BlogArchive1' locked='false' title='Archive' type='BlogArchive' visible='false'><b:includable id='main'/></b:widget>
+          <b:widget id='Label1' locked='false' title='Labels' type='Label' visible='false'><b:includable id='main'/></b:widget>
+          <b:widget id='LinkList1' locked='false' title='Menu' type='LinkList' visible='false'><b:includable id='main'/></b:widget>
+          <b:widget id='LinkList2' locked='false' title='Follow Us' type='LinkList' visible='false'><b:includable id='main'/></b:widget>
+          <b:widget id='LinkList3' locked='false' title='Learn More' type='LinkList' visible='false'><b:includable id='main'/></b:widget>
+          <b:widget id='LinkList4' locked='false' title='Icons' type='LinkList' visible='false'><b:includable id='main'/></b:widget>
+          <b:widget id='ReportAbuse1' locked='false' title='' type='ReportAbuse' visible='false'><b:includable id='main'/></b:widget>
+        </b:section>
+      </aside>
+    </div>
+
+    <!-- YouTube-Style Live Search Modal -->
+    <div class='md3-modal-backdrop' id='searchModal'>
+      <div class='md3-modal-card'>
+        <form action='/search' class='md3-search-box' method='get'>
+          <span class='material-symbols-outlined' style='color: var(--md-sys-color-on-surface-variant);'>search</span>
+          <input autocomplete='off' id='searchQueryInput' name='q' placeholder='Search posts...' type='text'/>
+          <button class='md3-icon-btn' id='searchCloseBtn' style='width:32px;height:32px;' type='button'>
+            <span class='material-symbols-outlined' style='font-size:18px;'>close</span>
+          </button>
+        </form>
+        <div class='md3-live-results' id='searchLiveResults'/>
+      </div>
+    </div>
+
+    <!-- PURE ICONS MD3 SHARE MODAL (NO LABELS, NO BACKGROUND BUTTONS) -->
+    <div class='md3-modal-backdrop' id='shareModal'>
+      <div class='md3-modal-card'>
+        <div class='md3-modal-header'>
+          <h3 class='md3-modal-title'>Share Post</h3>
+          <button class='md3-icon-btn' id='shareCloseBtn' style='width:34px;height:34px;' type='button'>
+            <span class='material-symbols-outlined' style='font-size:18px;'>close</span>
+          </button>
+        </div>
+
+        <div class='md3-share-grid'>
+          <!-- WhatsApp -->
+          <a aria-label='WhatsApp' class='md3-share-btn-item' href='#' id='shareWA' rel='noopener noreferrer' target='_blank'>
+            <svg fill='#25D366' viewBox='0 0 24 24'>
+              <path d='M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.78.6.26 1.07.41 1.44.53.6.19 1.15.16 1.59.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.17-.48-.29z'/>
+            </svg>
+          </a>
+
+          <!-- X (Twitter) -->
+          <a aria-label='X' class='md3-share-btn-item' href='#' id='shareX' rel='noopener noreferrer' target='_blank'>
+            <svg fill='currentColor' viewBox='0 0 24 24'>
+              <path d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'/>
+            </svg>
+          </a>
+
+          <!-- Facebook -->
+          <a aria-label='Facebook' class='md3-share-btn-item' href='#' id='shareFB' rel='noopener noreferrer' target='_blank'>
+            <svg fill='#1877F2' viewBox='0 0 24 24'>
+              <path d='M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z'/>
+            </svg>
+          </a>
+
+          <!-- Telegram -->
+          <a aria-label='Telegram' class='md3-share-btn-item' href='#' id='shareTG' rel='noopener noreferrer' target='_blank'>
+            <svg fill='#24A1DE' viewBox='0 0 24 24'>
+              <path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z'/>
+            </svg>
+          </a>
+
+          <!-- Email -->
+          <a aria-label='Email' class='md3-share-btn-item' href='#' id='shareMail' rel='noopener noreferrer' target='_blank'>
+            <svg fill='currentColor' viewBox='0 0 24 24'>
+              <path d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'/>
+            </svg>
+          </a>
+        </div>
+
+        <div class='md3-copy-container'>
+          <input class='md3-copy-input' id='shareUrlField' readonly='readonly' type='text'/>
+          <button class='md3-copy-submit' id='copyUrlBtn' type='button'>Copy</button>
+        </div>
+
+        <button class='md3-device-share-btn' id='deviceShareBtn' type='button'>
+          <span class='material-symbols-outlined'>share</span>
+          <span>More Device Options</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Client-Side Scripts -->
+    <script type='text/javascript'>
+      //<![CDATA[
+      document.addEventListener('DOMContentLoaded', function() {
+        // 1. Enforce Client-Side 300-char Limit on Existing Snippets
+        document.querySelectorAll('.post-snippet').forEach(function(el) {
+          var raw = el.textContent.trim();
+          if (raw.length > 300) {
+            el.textContent = raw.substring(0, 300).trim() + '...';
+          }
+        });
+
+        // 2. Collapsible Comments Section
+        var commentsSection = document.getElementById('comments');
+        if (commentsSection) {
+          var commentCountBadge = document.querySelector('.num_comments');
+          var countText = 'Comments';
+          if (commentCountBadge) {
+            countText = commentCountBadge.textContent.trim();
+          }
+
+          var collapseContainer = document.createElement('div');
+          collapseContainer.className = 'comments-collapse-container';
+
+          var toggleBtn = document.createElement('button');
+          toggleBtn.type = 'button';
+          toggleBtn.className = 'comments-collapse-btn';
+          toggleBtn.innerHTML = `
+            <div class="comments-collapse-left">
+              <span class="material-symbols-outlined">chat_bubble</span>
+              <span class="comments-collapse-label">View ${countText}</span>
+            </div>
+            <span class="material-symbols-outlined comments-collapse-icon">expand_more</span>
+          `;
+
+          var collapseBody = document.createElement('div');
+          collapseBody.className = 'comments-collapse-body';
+
+          commentsSection.parentNode.insertBefore(collapseContainer, commentsSection);
+          collapseContainer.appendChild(toggleBtn);
+          collapseContainer.appendChild(collapseBody);
+          collapseBody.appendChild(commentsSection);
+
+          toggleBtn.addEventListener('click', function() {
+            var isExpanded = collapseContainer.classList.toggle('expanded');
+            var label = toggleBtn.querySelector('.comments-collapse-label');
+            label.textContent = isExpanded ? 'Hide Comments' : `View ${countText}`;
+          });
+        }
+
+        // 3. Pure Icons MD3 Share Modal
+        var shareModal = document.getElementById('shareModal');
+        var shareCloseBtn = document.getElementById('shareCloseBtn');
+        var shareUrlField = document.getElementById('shareUrlField');
+        var copyUrlBtn = document.getElementById('copyUrlBtn');
+        var deviceShareBtn = document.getElementById('deviceShareBtn');
+
+        function bindShareTriggers() {
+          document.querySelectorAll('.md3-share-trigger').forEach(function(btn) {
+            if (btn.dataset.bound) return;
+            btn.dataset.bound = 'true';
+            btn.addEventListener('click', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              var title = btn.getAttribute('data-title') || document.title;
+              var url = btn.getAttribute('data-url') || window.location.href;
+
+              if (shareModal) {
+                shareUrlField.value = url;
+                document.getElementById('shareWA').href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(title + ' ' + url);
+                document.getElementById('shareX').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(title) + '&url=' + encodeURIComponent(url);
+                document.getElementById('shareFB').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
+                document.getElementById('shareTG').href = 'https://t.me/share/url?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title);
+                document.getElementById('shareMail').href = 'mailto:?subject=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(url);
+
+                if (deviceShareBtn) {
+                  if (navigator.share) {
+                    deviceShareBtn.style.display = 'inline-flex';
+                    deviceShareBtn.onclick = function() {
+                      navigator.share({ title: title, url: url }).catch(function() {});
+                    };
+                  } else {
+                    deviceShareBtn.style.display = 'none';
+                  }
+                }
+
+                shareModal.classList.add('active');
+              }
+            });
+          });
+        }
+        bindShareTriggers();
+
+        if (shareCloseBtn && shareModal) {
+          shareCloseBtn.addEventListener('click', function() {
+            shareModal.classList.remove('active');
+          });
+        }
+
+        if (copyUrlBtn && shareUrlField) {
+          copyUrlBtn.addEventListener('click', function() {
+            navigator.clipboard.writeText(shareUrlField.value).then(function() {
+              copyUrlBtn.textContent = 'Copied!';
+              setTimeout(function() { copyUrlBtn.textContent = 'Copy'; }, 2000);
+            });
+          });
+        }
+
+        // 4. Infinite Load More (15 Posts Per Batch with 300-Char Limit)
+        var loadMoreBox = document.getElementById('infiniteLoaderBox');
+        var loadMoreBtn = document.getElementById('loadMorePostsBtn');
+        var spinner = document.getElementById('loadMoreSpinner');
+        var endNotice = document.getElementById('loadMoreEndNotice');
+        var postsContainer = document.querySelector('.Blog .blog-posts');
+
+        if (loadMoreBox && postsContainer && loadMoreBtn) {
+          var BATCH_SIZE = 15;
+          var currentCount = postsContainer.querySelectorAll('.post-outer-container').length;
+          var startIndex = currentCount + 1;
+          var isLoading = false;
+          var hasMore = true;
+
+          function getFeedUrl(start) {
+            var path = window.location.pathname;
+            var search = window.location.search;
+            var baseUrl = '/feeds/posts/summary';
+
+            if (path.indexOf('/search/label/') !== -1) {
+              var label = decodeURIComponent(path.split('/search/label/')[1].split('?')[0]);
+              baseUrl += '/-/' + encodeURIComponent(label);
+            }
+
+            var params = new URLSearchParams(search);
+            var query = params.get('q');
+
+            var url = baseUrl + '?alt=json&start-index=' + start + '&max-results=' + BATCH_SIZE;
+            if (query) {
+              url += '&q=' + encodeURIComponent(query);
+            }
+            return url;
+          }
+
+          function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, function(tag) {
+              return { '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag;
+            });
+          }
+
+          function loadPostsBatch() {
+            if (isLoading || !hasMore) return;
+            isLoading = true;
+            loadMoreBtn.style.display = 'none';
+            spinner.style.display = 'block';
+
+            fetch(getFeedUrl(startIndex))
+              .then(function(res) { return res.json(); })
+              .then(function(data) {
+                var entries = data.feed ? data.feed.entry : [];
+
+                if (!entries || entries.length === 0) {
+                  hasMore = false;
+                  spinner.style.display = 'none';
+                  endNotice.style.display = 'block';
+                  return;
+                }
+
+                entries.forEach(function(entry) {
+                  var title = entry.title ? entry.title.$t : 'No Title';
+                  var postUrl = '#';
+                  if (entry.link) {
+                    entry.link.forEach(function(l) {
+                      if (l.rel === 'alternate') postUrl = l.href;
+                    });
+                  }
+
+                  var author = entry.author && entry.author[0] && entry.author[0].name ? entry.author[0].name.$t : 'Admin';
+                  var published = new Date(entry.published.$t).toLocaleDateString(undefined, {
+                    year: 'numeric', month: 'short', day: 'numeric'
+                  });
+
+                  var thumb = '';
+                  if (entry.media$thumbnail && entry.media$thumbnail.url) {
+                    thumb = entry.media$thumbnail.url.replace(/\/s[0-9]+(-c)?\//, '/s200-c/');
+                  }
+
+                  // Strict 300 character limit on infinite loaded snippets
+                  var rawSnippet = entry.summary ? entry.summary.$t.replace(/<[^>]*>?/gm, '').trim() : '';
+                  var snippet = rawSnippet.length > 300 ? rawSnippet.substring(0, 300).trim() + '...' : rawSnippet;
+
+                  var article = document.createElement('article');
+                  article.className = 'post-outer-container';
+                  article.innerHTML = `
+                    <div class="post">
+                      <h3 class="post-title"><a href="${postUrl}">${escapeHTML(title)}</a></h3>
+                      <div class="post-header">Posted by ${escapeHTML(author)} - ${published}</div>
+                      <div class="post-share-header-bar">
+                        <button class="md3-share-trigger" data-title="${escapeHTML(title)}" data-url="${postUrl}" type="button">
+                          <span class="material-symbols-outlined" style="font-size: 16px;">share</span>
+                          <span>Share</span>
+                        </button>
+                      </div>
+                      <div class="post-body">
+                        ${thumb ? `<div class="snippet-thumbnail"><img src="${thumb}" alt="${escapeHTML(title)}" loading="lazy"/></div>` : ''}
+                        <p class="post-snippet">${escapeHTML(snippet)}</p>
+                      </div>
+                      <div class="post-bottom">
+                        <div class="jump-link">
+                          <a href="${postUrl}">Read more</a>
+                        </div>
+                      </div>
+                    </div>
+                  `;
+
+                  postsContainer.appendChild(article);
+                });
+
+                startIndex += entries.length;
+                bindShareTriggers();
+
+                spinner.style.display = 'none';
+                if (entries.length < BATCH_SIZE) {
+                  hasMore = false;
+                  endNotice.style.display = 'block';
+                } else {
+                  loadMoreBtn.style.display = 'inline-flex';
+                }
+                isLoading = false;
+              })
+              .catch(function() {
+                spinner.style.display = 'none';
+                loadMoreBtn.style.display = 'inline-flex';
+                isLoading = false;
+              });
+          }
+
+          loadMoreBtn.addEventListener('click', loadPostsBatch);
+
+          if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function(entries) {
+              if (entries[0].isIntersecting && hasMore) {
+                loadPostsBatch();
+              }
+            }, { rootMargin: '300px' });
+            observer.observe(loadMoreBox);
+          }
+        }
+
+        // 5. Theme Management (Light / Dark)
+        var themeBtn = document.getElementById('themeToggleBtn');
+        var themeIcon = document.getElementById('themeIcon');
+
+        function updateThemeDisplay(theme) {
+          document.documentElement.setAttribute('data-theme', theme);
+          if (themeIcon) {
+            themeIcon.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
+          }
+        }
+
+        var currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        updateThemeDisplay(currentTheme);
+
+        if (themeBtn) {
+          themeBtn.addEventListener('click', function() {
+            var nextTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('md3_theme', nextTheme);
+            updateThemeDisplay(nextTheme);
+          });
+        }
+
+        // 6. YouTube-Style Live Search Preview
+        var searchModal = document.getElementById('searchModal');
+        var searchOpenBtn = document.getElementById('searchOpenBtn');
+        var searchCloseBtn = document.getElementById('searchCloseBtn');
+        var searchInput = document.getElementById('searchQueryInput');
+        var liveResults = document.getElementById('searchLiveResults');
+        var searchDebounce;
+
+        if (searchOpenBtn && searchModal) {
+          searchOpenBtn.addEventListener('click', function() {
+            searchModal.classList.add('active');
+            setTimeout(function() { searchInput.focus(); }, 100);
+          });
+        }
+
+        if (searchCloseBtn && searchModal) {
+          searchCloseBtn.addEventListener('click', function() {
+            searchModal.classList.remove('active');
+          });
+        }
+
+        function escapeSearchHTML(str) {
+          return str.replace(/[&<>'"]/g, function(tag) {
+            return { '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag;
+          });
+        }
+
+        function renderLiveResults(posts, query) {
+          if (!posts || posts.length === 0) {
+            liveResults.innerHTML = '<div class="md3-live-status">No matching articles found</div>';
+            liveResults.classList.add('has-results');
+            return;
+          }
+
+          var html = '';
+          posts.slice(0, 5).forEach(function(post) {
+            var title = post.title.$t;
+            var link = '#';
+            post.link.forEach(function(l) {
+              if (l.rel === 'alternate') link = l.href;
+            });
+            var thumb = post.media$thumbnail ? post.media$thumbnail.url : '';
+            var published = new Date(post.published.$t).toLocaleDateString(undefined, {
+              year: 'numeric', month: 'short', day: 'numeric'
+            });
+
+            html += `
+              <a href="${link}" class="md3-live-item">
+                ${thumb ? `<img class="md3-live-thumb" src="${thumb}" alt="" />` : '<span class="material-symbols-outlined" style="color:var(--md-sys-color-primary);">article</span>'}
+                <div class="md3-live-text">
+                  <div class="md3-live-title">${escapeSearchHTML(title)}</div>
+                  <div class="md3-live-meta">${published}</div>
+                </div>
+                <span class="material-symbols-outlined" style="font-size:18px;color:var(--md-sys-color-on-surface-variant);">north_west</span>
+              </a>
+            `;
+          });
+
+          liveResults.innerHTML = html;
+          liveResults.classList.add('has-results');
+        }
+
+        if (searchInput) {
+          searchInput.addEventListener('input', function() {
+            var query = this.value.trim();
+            clearTimeout(searchDebounce);
+
+            if (query.length < 2) {
+              liveResults.innerHTML = '';
+              liveResults.classList.remove('has-results');
+              return;
+            }
+
+            searchDebounce = setTimeout(function() {
+              liveResults.innerHTML = '<div class="md3-live-status">Searching...</div>';
+              liveResults.classList.add('has-results');
+
+              fetch('/feeds/posts/summary?alt=json&max-results=6&q=' + encodeURIComponent(query))
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                  var entries = data.feed ? data.feed.entry : [];
+                  renderLiveResults(entries, query);
+                })
+                .catch(function() {
+                  liveResults.innerHTML = '<div class="md3-live-status">Press Enter to search</div>';
+                });
+            }, 250);
+          });
+        }
+
+        // 7. Client-Side Post Sorting
+        var sortChips = document.querySelectorAll('.md3-sort-chip');
+        if (sortChips.length && postsContainer) {
+          var originalPosts = Array.from(postsContainer.querySelectorAll('.post-outer-container'));
+
+          sortChips.forEach(function(chip) {
+            chip.addEventListener('click', function() {
+              sortChips.forEach(function(c) { c.classList.remove('active'); });
+              this.classList.add('active');
+              var sortType = this.getAttribute('data-sort');
+
+              var sorted = Array.from(postsContainer.querySelectorAll('.post-outer-container'));
+
+              if (sortType === 'oldest') {
+                sorted.reverse();
+              } else if (sortType === 'alpha') {
+                sorted.sort(function(a, b) {
+                  var titleA = (a.querySelector('.post-title') || {}).textContent || '';
+                  var titleB = (b.querySelector('.post-title') || {}).textContent || '';
+                  return titleA.trim().localeCompare(titleB.trim());
+                });
+              } else if (sortType === 'newest') {
+                sorted = [...originalPosts];
+              }
+
+              postsContainer.style.opacity = '0.5';
+              setTimeout(function() {
+                sorted.forEach(function(postEl) { postsContainer.appendChild(postEl); });
+                postsContainer.style.opacity = '1';
+              }, 120);
+            });
+          });
+        }
+
+        // Close Modals on Escape or Backdrop Click
+        window.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            if (searchModal) searchModal.classList.remove('active');
+            if (shareModal) shareModal.classList.remove('active');
+          }
+        });
+
+        [searchModal, shareModal].forEach(function(modal) {
+          if (modal) {
+            modal.addEventListener('click', function(e) {
+              if (e.target === modal) modal.classList.remove('active');
+            });
+          }
+        });
+      });
+      //]]>
+    </script>
+    <b:template-script async='true' name='indie' version='1.0.0'/>
+  </body>
+</html>

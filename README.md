@@ -1,6 +1,6 @@
 # HirotakaDango Blogger Theme
 
-<img width="2560" height="1440" alt="17897148194448920916985559096443" src="https://github.com/user-attachments/assets/979bf255-8375-432c-94a3-d486473d62ad" />
+<img width="1280" height="720" alt="17901973238214800960594994345933" src="https://github.com/user-attachments/assets/c0f1728f-fb47-4ff9-8c4c-e7400a8a746f" />
 
 A minimalist, borderless template for Google Blogger built around the Material Design 3 design system. It focuses on clean typography, smooth elevations, mobile responsiveness, and zero-line visual architecture with native light and dark modes.
 
